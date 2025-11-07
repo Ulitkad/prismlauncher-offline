@@ -16,7 +16,7 @@ iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 3. Откройте PrismLauncher, добавьте новый автономный аккаунт и установите его как основной.
 
 ### Linux / macOS (Bash)
-1. Установите PrismLauncher через пакетный менеджер или Flatpak.
+1. Установите PrismLauncher через [оффициальный сайт]/[flathub](https://flathub.org/en/apps/org.prismlauncher.PrismLauncher)/пакетный менеджер.
 2. Выполните следующую команду в терминале:
 ```bash
 bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
