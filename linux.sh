@@ -6,62 +6,90 @@ NORMAL_PATH=$HOME/.local/share/PrismLauncher
 FLATPAK_PATH=$HOME/.var/app/org.prismlauncher.PrismLauncher/data/PrismLauncher
 MACOS_PATH=$HOME/Library/Application\ Support/PrismLauncher
 
+set_language() {
+    if [[ "$LANG" == *"ru_RU"* ]]; then
+        prismlauncher_running="PrismLauncher запущен! Закрытие.."
+        configuration_directory_detected="Конфигурация PrismLauncher обнаружена по пути: "
+        detected_system="Обнаруженная система:"
+        config_directory_failed="Не удалось автоматически обнаружить директорию с конфигурацией PrismLauncher!"
+        specify_path="Укажите путь к диркетории, где находиться prismlauncher.cfg: "
+        unknown_os="Неизвестная ОС!"
+        try_to_specify_path="Попробуйте указать путь к директории, где находиться prismlauncher.cfg: "
+        modifing_accounts="Изменение файла accounts.json.."
+        success="\e[32mУспешно! Теперь вы можете добавить свой оффлайн аккаунт в Prism Launcher\e[0m"
+        no_succes="\e[31mВо время исполнения скрипта произошли ошибки.\e[0m"
+    else
+        prismlauncher_running="PrismLauncher running! Closing.."
+        configuration_directory_detected="Detected PrismLauncher configuration in: "
+        detected_system="Detected system:"
+        config_directory_failed="Failed to automacticly detect PrismLauncher configuration directory!"
+        specify_path="Specify path to the directory, where prismlauncher.cfg is located: "
+        unknown_os="Unknown OS!"
+        try_to_specify_path="Try to specify path to the directory, where prismlauncher.cfg is located: "
+        modifing_accounts="Modifing accounts.json file.."
+        success="\e[32mSuccess! You can now add your offline account in Prism Launcher.\e[0m"
+        no_succes="\e[31mErrors occurred during the execution of the script.\e[0m"
+    fi
+
+}
+
 close_launcher() {
     pids=$(pgrep prismlauncher)
 
     if [ -n "$pids" ]; then
-        echo "PrismLauncher running! Closing.."
+        echo "$prismlauncher_running"
         kill $pids
     fi
 }
 
 found_launcher_path() {
     if [ "$OS" = "Linux" ]; then
-        echo "Detected system: Linux"
+        echo "$detected_system Linux"
 
         if [ -e $NORMAL_PATH ]; then
             PATH=$NORMAL_PATH
-            echo "Detected prismlauncher configuration in: $PATH"
+            echo "$configuration_directory_detected $PATH"
 
 
         elif [ -e $FLATPAK_PATH ]; then
             PATH=$FLATPAK_PATH
-            echo "Detected prismlauncher configuration in: $PATH"
+            echo "$configuration_directory_detected $PATH"
 
         else
-            echo "Failed to automacticly detect prismlauncher configuration directory!"
-            read -p "Specify path to the directory, where prismlauncher.cfg is located: " PATH
+            echo "$config_directory_failed"
+            read -p "$specify_path" PATH
         fi
 
     elif [ "$OS" = "Darwin" ]; then
-        echo "Detected system: macOS"
+        echo "$detected_system macOS"
 
         if [ -e $MACOS_PATH ]; then
             PATH=$MACOS_PATH
-            echo "Detected prismlauncher configuration in: $PATH"
+            echo "$configuration_directory_detected $PATH"
 
         else
-            echo "Failed to automacticly detect prismlauncher configuration directory!"
-            read -p "Specify path to the directory, where prismlauncher.cfg is located: " PATH
+            echo "$config_directory_failed"
+            read -p "$specify_path" PATH
         fi
 
     else
-        echo "Unknown OS! $OS"
-        read -p "Try to specify path to the directory, where prismlauncher.cfg is located: " PATH
+        echo "$unknown_os $OS"
+        read -p "$try_to_specify_path" PATH
     fi
 }
 
 modify_accounts_json() {
-    echo "Modifing accounts.json file.."
+    echo "$modifing_accounts"
     echo '{"accounts": [{"entitlement": {"canPlayMinecraft": true,"ownsMinecraft": true},"type": "MSA"}],"formatVersion": 3}' > $1/accounts.json
 
     if [ $? -eq 0 ]; then
-        echo -e "\e[32mSuccess! You can now add your offline account in PrismLauncher.\e[0m"
+        echo -e "$success"
     else
-        echo -e "\e[31mErrors occurred during the execution of the script!\e[0m"
+        echo -e "$no_success"
     fi
 }
 
+set_language
 close_launcher
 found_launcher_path
 modify_accounts_json $PATH

@@ -18,7 +18,7 @@ iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 Run the following command in your terminal:
 
 ```bash
-bash <(curl -fsSL https://prism.ulitka.space/linux.sh)
+bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
 ```
 
 Then open PrismLauncher, add new offline account, and set it as the default one
