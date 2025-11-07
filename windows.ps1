@@ -1,5 +1,6 @@
-$NORMAL_PATH="$env:APPDATA\PrismLauncher"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+$NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
 function set_language {
     if ([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") {
