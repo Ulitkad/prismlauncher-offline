@@ -1,6 +1,6 @@
 $NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
-set_language {
+function set_language {
     if ([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") {
         $prismlauncher_running="PrismLauncher запущен! Закрытие.."
         $configuration_directory_detected="Конфигурация PrismLauncher обнаружена по пути: "
@@ -29,14 +29,14 @@ set_language {
 
 }
 
-close_launcher {
+function close_launcher {
     if (Get-Process -Name "prismlauncher" -ErrorAction SilentlyContinue) {
         Write-Output $prismlauncher_running
         Stop-Process -Name "prismlauncher"
     }
 }
 
-found_launcher_path {
+function found_launcher_path {
     if (Test-Path $NORMAL_PATH) {
         $LAUNCHER_PATH=$NORMAL_PATH
         Write-Output $configuration_directory_detected $LAUNCHER_PATH
@@ -53,7 +53,7 @@ found_launcher_path {
     return $LAUNCHER_PATH
 }
 
-modify_accounts_json {
+function modify_accounts_json {
     param ($x)
 
     Write-Output $modifing_accounts
