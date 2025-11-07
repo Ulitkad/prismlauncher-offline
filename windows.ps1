@@ -1,7 +1,7 @@
 $NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
 function set_language {
-    if ([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") {
+    if (([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") -and ($PSVersionTable.PSVersion.Major -ge 7)) {
         $global:prismlauncher_running="PrismLauncher запущен! Закрытие.."
         $global:configuration_directory_detected="Конфигурация PrismLauncher обнаружена по пути: "
         $global:detected_system="Обнаруженная система:"
