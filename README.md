@@ -8,7 +8,6 @@ This repository contains scripts that allow you to add offline accounts in Prism
 ## Usage
 
 ### Windows (PowerShell)
-Run the following command in PowerShell:
 1. Install prismlauncher from [official site](https://prismlauncher.org/download/).
 2. Run the following command in powershell:
 ```powershell
