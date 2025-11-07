@@ -1,4 +1,4 @@
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+chcp 65001
 
 $NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
