@@ -34,4 +34,4 @@ bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
 ---
 
 ## Credits
-This script was inspired by [antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass](https://github.com/antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass),
+Этот скрипт был вдохновлён [antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass](https://github.com/antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass),
