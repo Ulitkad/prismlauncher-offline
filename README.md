@@ -30,3 +30,7 @@ Each script:
 1. Locates your PrismLauncher configuration folder  
 2. Closes the launcher if it is running  
 3. Modifies the `accounts.json` file to enable adding offline accounts
+
+
+## Credits
+This script was inspired by [antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass](https://github.com/antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass),
