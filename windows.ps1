@@ -1,5 +1,4 @@
-chcp 65001
-
+$CONSOLE_ENCODING=[Console]::OutputEncoding
 $NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
 function set_language {
@@ -31,9 +30,23 @@ function set_language {
 
 }
 
+function write_localized([string]$text) {
+    param (
+        [string]$Text,
+        [Parameter(ValueFromRemainingArguments=$true)]
+        $WriteHostArgs
+    )
+
+    $CONSOLE_ENCODING = [Console]::OutputEncoding
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes($Text)
+    $converted = $CONSOLE_ENCODING.GetString($bytes)
+
+    Write-Host $converted @WriteHostArgs
+}
+
 function close_launcher {
     if (Get-Process -Name "prismlauncher" -ErrorAction SilentlyContinue) {
-        Write-Host $prismlauncher_running
+        write_localized $prismlauncher_running
         Stop-Process -Name "prismlauncher"
     }
 }
@@ -41,14 +54,14 @@ function close_launcher {
 function found_launcher_path {
     if (Test-Path $NORMAL_PATH) {
         $LAUNCHER_PATH = $NORMAL_PATH
-        Write-Host "$configuration_directory_detected $LAUNCHER_PATH"
+        write_localized "$configuration_directory_detected $LAUNCHER_PATH"
     } else {
-        Write-Host $config_directory_failed
+        write_localized $config_directory_failed
         $LAUNCHER_PATH = Read-Host $specify_path
         $LAUNCHER_PATH = $LAUNCHER_PATH.Trim()
 
         if (-not (Test-Path $LAUNCHER_PATH)) {
-            Write-Host $path_not_found -ForegroundColor Red
+            write_localized $path_not_found -ForegroundColor Red
             exit
         }
     }
@@ -68,11 +81,11 @@ function modify_accounts_json {
     $x = $x.Trim()
 
     if (-not (Test-Path $x)) {
-        Write-Host $path_not_found -ForegroundColor Red
+        write_localized $path_not_found -ForegroundColor Red
         exit
     }
 
-    Write-Host $modifying_accounts
+    write_localized $modifying_accounts
 
     $accountsPath = Join-Path -Path $x -ChildPath "accounts.json"
 
@@ -80,9 +93,9 @@ function modify_accounts_json {
         Out-File -FilePath $accountsPath -Encoding utf8 -Force
 
     if ($?) {
-        Write-Host $success -ForegroundColor Green
+        write_localized $success -ForegroundColor Green
     } else {
-        Write-Host $no_success -ForegroundColor Red
+        write_localized $no_success -ForegroundColor Red
     }
 }
 
