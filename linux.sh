@@ -16,7 +16,7 @@ set_language() {
         unknown_os="Неизвестная ОС!"
         try_to_specify_path="Попробуйте указать путь к директории, где находится prismlauncher.cfg: "
         modifying_accounts="Изменение файла accounts.json..."
-        success="\e[32mУспешно! Теперь вы можете добавить свой оффлайн аккаунт в Prism Launcher\e[0m"
+        success="\e[32mУспешно! Теперь вы можете добавить свой автономный аккаунт в Prism Launcher\e[0m"
         no_success="\e[31mВо время исполнения скрипта произошли ошибки.\e[0m"
         path_not_found="Путь не найден!"
     else

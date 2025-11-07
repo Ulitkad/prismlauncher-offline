@@ -8,7 +8,7 @@
 ## Использование
 
 ### Windows (PowerShell)
-1. Установите PrismLauncher [официального сайта](https://prismlauncher.org/download/).  
+1. Установите PrismLauncher с [официального сайта](https://prismlauncher.org/download/).  
 2. Выполните следующую команду в PowerShell:
 ```powershell
 iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
@@ -16,7 +16,7 @@ iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 3. Откройте PrismLauncher, добавьте новый автономный аккаунт и установите его как основной.
 
 ### Linux / macOS (Bash)
-1. Установите PrismLauncher через: [оффициальный сайт](https://prismlauncher.org/download/) / [flathub](https://flathub.org/en/apps/org.prismlauncher.PrismLauncher) / пакетный менеджер.
+1. Установите PrismLauncher через: [официальный сайт](https://prismlauncher.org/download/) / [flathub](https://flathub.org/en/apps/org.prismlauncher.PrismLauncher) / пакетный менеджер.
 2. Выполните следующую команду в терминале:
 ```bash
 bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
