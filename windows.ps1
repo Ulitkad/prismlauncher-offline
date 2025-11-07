@@ -1,4 +1,4 @@
-$NORMAL_PATH=$env:APPDATA\PrismLauncher
+$NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
 set_language {
     if ([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") {
