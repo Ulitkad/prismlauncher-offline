@@ -2,36 +2,36 @@ $NORMAL_PATH="$env:APPDATA\PrismLauncher"
 
 function set_language {
     if ([System.Globalization.CultureInfo]::CurrentCulture.TwoLetterISOLanguageName -eq "ru") {
-        $prismlauncher_running="PrismLauncher запущен! Закрытие.."
-        $configuration_directory_detected="Конфигурация PrismLauncher обнаружена по пути: "
-        $detected_system="Обнаруженная система:"
-        $config_directory_failed="Не удалось автоматически обнаружить директорию с конфигурацией PrismLauncher!"
-        $specify_path="Укажите путь к диркетории, где находиться prismlauncher.cfg: "
-        $unknown_os="Неизвестная ОС!"
-        $try_to_specify_path="Попробуйте указать путь к директории, где находиться prismlauncher.cfg: "
-        $modifing_accounts="Изменение файла accounts.json.."
-        $success="Успешно! Теперь вы можете добавить свой оффлайн аккаунт в Prism Launcher"
-        $no_success="Во время исполнения скрипта произошли ошибки."
-        $path_not_found="Путь не найден!"
+        $global:prismlauncher_running="PrismLauncher запущен! Закрытие.."
+        $global:configuration_directory_detected="Конфигурация PrismLauncher обнаружена по пути: "
+        $global:detected_system="Обнаруженная система:"
+        $global:config_directory_failed="Не удалось автоматически обнаружить директорию с конфигурацией PrismLauncher!"
+        $global:specify_path="Укажите путь к директории, где находиться prismlauncher.cfg: "
+        $global:unknown_os="Неизвестная ОС!"
+        $global:try_to_specify_path="Попробуйте указать путь к директории, где находится prismlauncher.cfg: "
+        $global:modifying_accounts="Изменение файла accounts.json.."
+        $global:success="Успешно! Теперь вы можете добавить свой оффлайн аккаунт в Prism Launcher"
+        $global:no_success="Во время исполнения скрипта произошли ошибки."
+        $global:path_not_found="Путь не найден!"
     } else {
-        $prismlauncher_running="PrismLauncher running! Closing.."
-        $configuration_directory_detected="Detected PrismLauncher configuration in: "
-        $detected_system="Detected system:"
-        $config_directory_failed="Failed to automacticly detect PrismLauncher configuration directory!"
-        $specify_path="Specify path to the directory, where prismlauncher.cfg is located: "
-        $unknown_os="Unknown OS!"
-        $try_to_specify_path="Try to specify path to the directory, where prismlauncher.cfg is located: "
-        $modifing_accounts="Modifing accounts.json file.."
-        $success="Success! You can now add your offline account in Prism Launcher."
-        $no_success="Errors occurred during the execution of the script."
-        $path_not_found="Path not found!"
+        $global:prismlauncher_running="PrismLauncher running! Closing.."
+        $global:configuration_directory_detected="Detected PrismLauncher configuration in: "
+        $global:detected_system="Detected system:"
+        $global:config_directory_failed="Failed to automatically detect PrismLauncher configuration directory!"
+        $global:specify_path="Specify path to the directory, where prismlauncher.cfg is located: "
+        $global:unknown_os="Unknown OS!"
+        $global:try_to_specify_path="Try to specify path to the directory, where prismlauncher.cfg is located: "
+        $global:modifying_accounts="Modifying accounts.json file.."
+        $global:success="Success! You can now add your offline account in Prism Launcher."
+        $global:no_success="Errors occurred during the execution of the script."
+        $global:path_not_found="Path not found!"
     }
 
 }
 
 function close_launcher {
     if (Get-Process -Name "prismlauncher" -ErrorAction SilentlyContinue) {
-        Write-Output $prismlauncher_running
+        Write-Host $prismlauncher_running
         Stop-Process -Name "prismlauncher"
     }
 }
@@ -70,7 +70,7 @@ function modify_accounts_json {
         exit
     }
 
-    Write-Host $modifing_accounts
+    Write-Host $modifying_accounts
 
     $accountsPath = Join-Path -Path $x -ChildPath "accounts.json"
 
