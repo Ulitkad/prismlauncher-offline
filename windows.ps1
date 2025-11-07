@@ -55,6 +55,7 @@ function found_launcher_path {
 
 function modify_accounts_json {
     param ($x)
+    $x = $x.Trim()
 
     Write-Output $modifing_accounts
 
