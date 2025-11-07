@@ -16,7 +16,7 @@ iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 3. Open PrismLauncher, add new offline account, and set it as the default one.
 
 ### Linux / macOS (Bash)
-1. Install prismlauncher from [official site]/[flatpak](https://flathub.org/en/apps/org.prismlauncher.PrismLauncher)/distro repositories.
+1. Install prismlauncher from [official site](https://prismlauncher.org/download/)/[flathub](https://flathub.org/en/apps/org.prismlauncher.PrismLauncher)/distro repositories.
 2. Run the following command in your terminal:
 ```bash
 bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
