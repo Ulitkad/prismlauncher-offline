@@ -30,19 +30,14 @@ function set_language {
 
 }
 
-function write_localized([string]$text) {
-    param (
-        [string]$Text,
-        [Parameter(ValueFromRemainingArguments=$true)]
-        $WriteHostArgs
-    )
-
+function write_localized($Text, [Parameter(ValueFromRemainingArguments=$true)] $WriteHostArgs) {
     $CONSOLE_ENCODING = [Console]::OutputEncoding
     $bytes = [System.Text.Encoding]::UTF8.GetBytes($Text)
     $converted = $CONSOLE_ENCODING.GetString($bytes)
 
     Write-Host $converted @WriteHostArgs
 }
+
 
 function close_launcher {
     if (Get-Process -Name "prismlauncher" -ErrorAction SilentlyContinue) {
