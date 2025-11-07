@@ -38,28 +38,41 @@ function close_launcher {
 
 function found_launcher_path {
     if (Test-Path $NORMAL_PATH) {
-        $LAUNCHER_PATH=$NORMAL_PATH
-        Write-Output $configuration_directory_detected $LAUNCHER_PATH
+        $LAUNCHER_PATH = $NORMAL_PATH
+        Write-Output "$configuration_directory_detected $LAUNCHER_PATH"
     } else {
         Write-Output $config_directory_failed
         $LAUNCHER_PATH = Read-Host $specify_path
+        $LAUNCHER_PATH = $LAUNCHER_PATH.Trim()
+
         if (-not (Test-Path $LAUNCHER_PATH)) {
             Write-Host $path_not_found -ForegroundColor Red
             exit
         }
-
     }
 
     return $LAUNCHER_PATH
 }
 
+
 function modify_accounts_json {
     param ($x)
+
+    if (-not $x) {
+        exit
+    }
+
     $x = $x.Trim()
+
+    if (-not (Test-Path $x)) {
+        Write-Host $path_not_found -ForegroundColor Red
+        exit
+    }
 
     Write-Output $modifing_accounts
 
-    '{"accounts": [{"entitlement": {"canPlayMinecraft": true, "ownsMinecraft": true}, "type": "MSA"}], "formatVersion": 3}' | Out-File -FilePath "$x\accounts.json" -Encoding utf8 -Force
+    '{"accounts": [{"entitlement": {"canPlayMinecraft": true, "ownsMinecraft": true}, "type": "MSA"}], "formatVersion": 3}' |
+        Out-File -FilePath (Join-Path $x "accounts.json") -Encoding utf8 -Force
 
     if ($?) {
         Write-Host $success -ForegroundColor Green
@@ -67,6 +80,7 @@ function modify_accounts_json {
         Write-Host $no_success -ForegroundColor Red
     }
 }
+
 
 set_language
 close_launcher
