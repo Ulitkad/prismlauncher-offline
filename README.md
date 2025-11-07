@@ -9,19 +9,20 @@ This repository contains scripts that allow you to add offline accounts in Prism
 
 ### Windows (PowerShell)
 Run the following command in PowerShell:
-
+1. Install prismlauncher from [official site](https://prismlauncher.org/download/).
+2. Run the following command in powershell:
 ```powershell
 iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 ```
+3. Open PrismLauncher, add new offline account, and set it as the default one.
 
 ### Linux / macOS (Bash)
-Run the following command in your terminal:
-
+1. Install prismlauncher from distro repos/flatpak.
+2. Run the following command in your terminal:
 ```bash
 bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
 ```
-
-Then open PrismLauncher, add new offline account, and set it as the default one
+3. Open PrismLauncher, add new offline account, and set it as the default one.
 
 ---
 
