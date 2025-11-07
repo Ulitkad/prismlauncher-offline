@@ -17,7 +17,7 @@ iex (Invoke-RestMethod 'https://prism.ulitka.space/windows.ps1')
 3. Open PrismLauncher, add new offline account, and set it as the default one.
 
 ### Linux / macOS (Bash)
-1. Install prismlauncher from distro repos/flatpak.
+1. Install prismlauncher from native repository/flatpak.
 2. Run the following command in your terminal:
 ```bash
 bash -c "$(curl -fsSL https://prism.ulitka.space/linux.sh)"
@@ -32,6 +32,7 @@ Each script:
 2. Closes the launcher if it is running  
 3. Modifies the `accounts.json` file to enable adding offline accounts
 
+---
 
 ## Credits
 This script was inspired by [antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass](https://github.com/antunnitraj/Prism-Launcher-PolyMC-Offline-Bypass),
